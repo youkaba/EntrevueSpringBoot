@@ -64,7 +64,7 @@ Vous avez aussi, optionnellement, la possibilité d'utiliser les librairies Lomb
 - Status: 200 OK
 
 ```
-$ curl http://localhost:8080/api/film/1
+http://localhost:8080/api/film/1
 {
    "id":1,
    "titre":"Star Wars: The Empire Strikes Back",
@@ -91,7 +91,6 @@ $ curl http://localhost:8080/api/film/1
 - Status: 201 CREATED
 
 ```
-$ curl -X POST --data
 '{
    "titre":"Star Wars: The Empire Strikes Back",
    "description":"Darth Vader is adamant about turning Luke Skywalker to the dark side.",
