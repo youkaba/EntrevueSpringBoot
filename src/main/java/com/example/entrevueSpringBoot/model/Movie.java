@@ -4,12 +4,10 @@ import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
-import static javax.persistence.CascadeType.MERGE;
-import static javax.persistence.CascadeType.PERSIST;
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Getter
@@ -33,9 +31,9 @@ public class Movie {
     private String titre;
     private String description;
 
-    @ManyToMany(cascade = {PERSIST, MERGE})
+    @ManyToMany
     @ToString.Exclude
-    private List<Actors> acteurs = new ArrayList<>();
+    private Set<Actors> acteurs = new HashSet<>();
 
     @Override
     public boolean equals(Object o) {

@@ -7,9 +7,11 @@ import com.example.entrevueSpringBoot.model.Movie;
 import com.example.entrevueSpringBoot.repository.MovieRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 @Service
+@Transactional
 public class MovieService {
 
     private final MovieRepository movieRepository;
@@ -17,7 +19,10 @@ public class MovieService {
     private final MovieMapper movieMapper;
 
     public Movie createMovie(MovieDTO movieRequest) {
-        return movieRepository.save(movieMapper.toMovie(movieRequest));
+        Movie entity = movieMapper.toMovie(movieRequest);
+        movieRepository.persist(entity);
+        entity.setTitre("gro");
+        return movieRepository.update(entity);
     }
 
     public Movie searchMovieById(Long id) {
