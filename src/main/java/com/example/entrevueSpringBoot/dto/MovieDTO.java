@@ -1,19 +1,15 @@
 package com.example.entrevueSpringBoot.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Value;
 
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 
-@Data
+@Value(staticConstructor = "of")
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
 public class MovieDTO {
-    private String titre;
-    private String description;
-    private Set<ActorsDTO> acteurs;
+    String titre;
+    String description;
+    Set<ActorsDTO> acteurs = new HashSet<>();
 }

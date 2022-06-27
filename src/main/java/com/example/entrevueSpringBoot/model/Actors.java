@@ -4,8 +4,13 @@ import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
+import static javax.persistence.CascadeType.MERGE;
+import static javax.persistence.CascadeType.PERSIST;
+import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Getter
@@ -27,6 +32,9 @@ public class Actors {
     private Long id;
     private String nom;
     private String prenom;
+
+    @ManyToMany(cascade = {PERSIST, MERGE}, fetch = LAZY)
+    private Set<Movie> movies = new HashSet<>();
 
     @Override
     public boolean equals(Object o) {

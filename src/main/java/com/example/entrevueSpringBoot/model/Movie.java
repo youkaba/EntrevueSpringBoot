@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Getter
@@ -31,7 +32,7 @@ public class Movie {
     private String titre;
     private String description;
 
-    @ManyToMany
+    @ManyToMany(cascade = ALL, fetch = FetchType.EAGER, mappedBy = "movies")
     @ToString.Exclude
     private Set<Actors> acteurs = new HashSet<>();
 

@@ -20,9 +20,9 @@ public class MovieService {
 
     public Movie createMovie(MovieDTO movieRequest) {
         Movie entity = movieMapper.toMovie(movieRequest);
-        movieRepository.persist(entity);
-        entity.setTitre("gro");
-        return movieRepository.update(entity);
+//        entity.setActeurs(movieRequest.getActeurs());
+        return movieRepository.persist(entity);
+
     }
 
     public Movie searchMovieById(Long id) {
